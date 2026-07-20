@@ -1,0 +1,165 @@
+{
+  "nav": {
+    "get_started": "Get Started",
+    "dashboard": "Dashboard",
+    "schemes": "Schemes",
+    "ngos": "NGOs",
+    "livelihoods": "Livelihoods",
+    "communities": "Communities",
+    "ai_assistant": "Sahayak AI",
+    "admin": "Admin",
+    "login": "Login",
+    "logout": "Logout",
+    "profile": "Profile",
+    "settings": "Settings",
+    "language": "Language",
+    "schemes_short": "Schemes",
+    "communities_short": "Communities",
+    "livelihoods_short": "Livelihoods",
+    "education": "Education",
+    "help": "Help Desk & FAQs",
+    "community_guidelines": "Community Guidelines"
+  },
+  "hero": {
+    "sdg": "Supporting SDG 1, 4, 8 & 10",
+    "main_heading": "Empowering Nomadic Communities",
+    "main_desc": "Discover schemes, connect with NGOs, and access livelihood opportunities.",
+    "check_eligibility": "Check Eligibility",
+    "explore_schemes": "Explore Schemes",
+    "title": "Jansetu",
+    "subtitle": "A Bridge for People.",
+    "description": "Empowering nomadic and semi-nomadic communities by connecting them with vital government schemes, support organizations, and livelihood opportunities.",
+    "btn_schemes": "Find Schemes",
+    "btn_ai": "Ask Sahayak AI",
+    "btn_explore": "Explore",
+    "btn_learn": "Learn More"
+  },
+  "features": {
+    "schemes": "सरकारी योजनाएं",
+    "schemes_desc": "अपने समुदाय के उत्थान के लिए तैयार की गई सैकड़ों कल्याणकारी योजनाओं तक पहुंचें।",
+    "ngos": "एनजीओ नेटवर्क",
+    "ngos_desc": "जमीनी स्तर पर काम कर रहे सत्यापित संगठनों से जुड़ें।",
+    "livelihoods": "आजीविका एवं कौशल",
+    "livelihoods_desc": "अपने आस-पास नौकरी के अवसर और कौशल विकास कार्यक्रम खोजें।",
+    "ai": "सहायक AI",
+    "ai_desc": "अपनी पसंदीदा भाषा में अपने सवालों के तुरंत जवाब पाएं।"
+  },
+  "footer": {
+    "tagline": "जनसेतु - लोगों के लिए एक पुल।",
+    "quick_links": "महत्वपूर्ण लिंक",
+    "home": "होम",
+    "contact": "संपर्क करें",
+    "privacy": "गोपनीयता नीति",
+    "terms": "सेवा की शर्तें",
+    "copyright": "© 2026 जनसेतु। सर्वाधिकार सुरक्षित।",
+    "cookie_policy": "कुकी नीति",
+    "accessibility": "पहुंच विवरण",
+    "help": "सहायता एवं FAQ",
+    "community_guidelines": "सामुदायिक दिशानिर्देश",
+    "features": "मंच सुविधाएँ",
+    "support": "समर्थन और संसाधन",
+    "legal": "कानूनी"
+  },
+  "auth": {
+    "welcome": "वापसी पर स्वागत है",
+    "login_msg": "अपने खाते में लॉग इन करें",
+    "email": "ईमेल पता",
+    "password": "पासवर्ड",
+    "sign_in": "साइन इन",
+    "signing_in": "साइन इन हो रहा है...",
+    "no_account": "क्या कोई खाता नहीं है?",
+    "sign_up": "साइन अप करें"
+  },
+  "common": {
+    "search": "खोजें...",
+    "category": "श्रेणी",
+    "state": "राज्य",
+    "district": "जिला",
+    "status": "स्थिति",
+    "all_categories": "सभी श्रेणियां",
+    "all_states": "सभी राज्य",
+    "all_statuses": "सभी स्थितियां",
+    "apply_now": "अभी आवेदन करें",
+    "view_details": "विवरण देखें",
+    "loading": "लोड हो रहा है...",
+    "success": "सफल",
+    "error": "त्रुटि",
+    "save": "सहेजें",
+    "cancel": "रद्द करें",
+    "edit": "संपादित करें",
+    "delete": "हटाएं",
+    "add": "जोड़ें"
+  },
+  "schemes": {
+    "title": "सरकारी योजनाएं",
+    "desc": "कल्याणकारी कार्यक्रम, छात्रवृत्ति और वित्तीय सहायता खोजें।",
+    "search_placeholder": "योजनाएं खोजें...",
+    "no_results": "कोई योजना नहीं मिली।"
+  },
+  "ngos": {
+    "no_website": "No Website",
+    "title": "NGO Directory",
+    "desc": "Find support organizations working in your area.",
+    "search_placeholder": "Search NGOs...",
+    "no_results": "No NGOs found."
+  },
+  "livelihoods": {
+    "title": "आजीविका के अवसर",
+    "desc": "नौकरियां और कौशल आधारित अवसर खोजें।",
+    "search_placeholder": "अवसर खोजें...",
+    "no_results": "कोई अवसर नहीं मिला।"
+  },
+  "communities": {
+    "title": "घुमंतू समुदाय",
+    "desc": "विभिन्न समुदायों के लिए जानकारी और संसाधन।",
+    "search_placeholder": "समुदाय खोजें...",
+    "no_results": "कोई समुदाय नहीं मिला।"
+  },
+  "ai": {
+    "welcome": "Welcome to Sahayak AI",
+    "subtitle": "Your intelligent assistant for government schemes and services",
+    "comm_method": "Communication Method",
+    "comm_desc": "Choose how you want to interact with Sahayak",
+    "type": "Type",
+    "type_desc": "Chat using text messages",
+    "speak": "Speak",
+    "speak_desc": "Use voice commands",
+    "title": "Sahayak AI",
+    "desc": "Your intelligent assistant for discovering schemes and opportunities.",
+    "input_placeholder": "Ask anything...",
+    "send": "Send",
+    "thinking": "Thinking..."
+  },
+  "categories": {
+    "nutrition": "पोषण",
+    "healthcare": "स्वास्थ्य देखभाल",
+    "community_support": "सामुदायिक सहायता",
+    "skill_development": "कौशल विकास",
+    "women_empowerment": "महिला सशक्तिकरण",
+    "disability_support": "विकलांगता सहायता",
+    "employment": "रोजगार"
+  },
+  "status": {
+    "active": "सक्रिय",
+    "verified": "सत्यापित",
+    "open": "खुला",
+    "inactive": "निष्क्रिय",
+    "closed": "बंद"
+  },
+  "action": {
+    "volunteer": "स्वयंसेवक"
+  },
+  "lang": {
+    "en": "English",
+    "ta": "தமிழ்",
+    "kn": "ಕನ್ನಡ",
+    "hi": "हिन्दी",
+    "te": "తెలుగు"
+  },
+  "stats": {
+    "schemes": "Active Schemes",
+    "ngos": "Verified NGOs",
+    "users": "Community Members",
+    "volunteers": "Active Volunteers"
+  }
+}

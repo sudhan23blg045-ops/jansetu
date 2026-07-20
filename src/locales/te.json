@@ -1,0 +1,165 @@
+{
+  "nav": {
+    "get_started": "Get Started",
+    "dashboard": "Dashboard",
+    "schemes": "Schemes",
+    "ngos": "NGOs",
+    "livelihoods": "Livelihoods",
+    "communities": "Communities",
+    "ai_assistant": "Sahayak AI",
+    "admin": "Admin",
+    "login": "Login",
+    "logout": "Logout",
+    "profile": "Profile",
+    "settings": "Settings",
+    "language": "Language",
+    "schemes_short": "Schemes",
+    "communities_short": "Communities",
+    "livelihoods_short": "Livelihoods",
+    "education": "Education",
+    "help": "Help Desk & FAQs",
+    "community_guidelines": "Community Guidelines"
+  },
+  "hero": {
+    "sdg": "Supporting SDG 1, 4, 8 & 10",
+    "main_heading": "Empowering Nomadic Communities",
+    "main_desc": "Discover schemes, connect with NGOs, and access livelihood opportunities.",
+    "check_eligibility": "Check Eligibility",
+    "explore_schemes": "Explore Schemes",
+    "title": "Jansetu",
+    "subtitle": "A Bridge for People.",
+    "description": "Empowering nomadic and semi-nomadic communities by connecting them with vital government schemes, support organizations, and livelihood opportunities.",
+    "btn_schemes": "Find Schemes",
+    "btn_ai": "Ask Sahayak AI",
+    "btn_explore": "Explore",
+    "btn_learn": "Learn More"
+  },
+  "features": {
+    "schemes": "ప్రభుత్వ పథకాలు",
+    "schemes_desc": "మీ సమాజం అభివృద్ధి కోసం రూపొందించబడిన వందలాది సంక్షేమ పథకాలను పొందండి.",
+    "ngos": "NGO నెట్‌వర్క్",
+    "ngos_desc": "క్షేత్రస్థాయిలో పనిచేస్తున్న ధృవీకరించబడిన సంస్థలతో కనెక్ట్ అవ్వండి.",
+    "livelihoods": "జీవనోపాధి & నైపుణ్యాలు",
+    "livelihoods_desc": "మీ సమీపంలోని ఉద్యోగ అవకాశాలు మరియు నైపుణ్యాభివృద్ధి కార్యక్రమాలను కనుగొనండి.",
+    "ai": "సహాయక్ AI",
+    "ai_desc": "మీకు నచ్చిన భాషలో మీ ప్రశ్నలకు తక్షణ సమాధానాలు పొందండి."
+  },
+  "footer": {
+    "tagline": "జన్‌సేతు - ప్రజల కోసం ఒక వంతెన.",
+    "quick_links": "ముఖ్యమైన లింక్‌లు",
+    "home": "హోమ్",
+    "contact": "మమ్మల్ని సంప్రదించండి",
+    "privacy": "గోప్యతా విధానం",
+    "terms": "సేవా నిబంధనలు",
+    "copyright": "© 2026 జన్‌సేతు. సర్వ హక్కులు ప్రత్యేకించబడ్డాయి.",
+    "cookie_policy": "కుకీ విధానం",
+    "accessibility": "ప్రాప్యత ప్రకటన",
+    "help": "సహాయం & FAQ",
+    "community_guidelines": "కమ్యూనిటీ మార్గదర్శకాలు",
+    "features": "ప్లాట్‌ఫారమ్ ఫీచర్లు",
+    "support": "మద్దతు & వనరులు",
+    "legal": "చట్టపరమైన"
+  },
+  "auth": {
+    "welcome": "తిరిగి స్వాగతం",
+    "login_msg": "మీ ఖాతాలోకి లాగిన్ అవ్వండి",
+    "email": "ఇమెయిల్ చిరునామా",
+    "password": "పాస్‌వర్డ్",
+    "sign_in": "సైన్ ఇన్",
+    "signing_in": "సైన్ ఇన్ అవుతోంది...",
+    "no_account": "ఖాతా లేదా?",
+    "sign_up": "సైన్ అప్"
+  },
+  "common": {
+    "search": "శోధించండి...",
+    "category": "వర్గం",
+    "state": "రాష్ట్రం",
+    "district": "జిల్లా",
+    "status": "స్థితి",
+    "all_categories": "అన్ని వర్గాలు",
+    "all_states": "అన్ని రాష్ట్రాలు",
+    "all_statuses": "అన్ని స్థితులు",
+    "apply_now": "ఇప్పుడే దరఖాస్తు చేయండి",
+    "view_details": "వివరాలు చూడండి",
+    "loading": "లోడ్ అవుతోంది...",
+    "success": "విజయం",
+    "error": "లోపం",
+    "save": "సేవ్ చేయండి",
+    "cancel": "రద్దు చేయండి",
+    "edit": "సవరించు",
+    "delete": "తొలగించు",
+    "add": "జోడించు"
+  },
+  "schemes": {
+    "title": "ప్రభుత్వ పథకాలు",
+    "desc": "సంక్షేమ కార్యక్రమాలు, ఉపకార వేతనాలు మరియు ఆర్థిక సహాయాన్ని కనుగొనండి.",
+    "search_placeholder": "పథకాలను శోధించండి...",
+    "no_results": "ఎటువంటి పథకాలు కనుగొనబడలేదు."
+  },
+  "ngos": {
+    "no_website": "No Website",
+    "title": "NGO Directory",
+    "desc": "Find support organizations working in your area.",
+    "search_placeholder": "Search NGOs...",
+    "no_results": "No NGOs found."
+  },
+  "livelihoods": {
+    "title": "ఉపాధి అవకాశాలు",
+    "desc": "ఉద్యోగాలు మరియు నైపుణ్యాధారిత అవకాశాలను కనుగొనండి.",
+    "search_placeholder": "అవకాశాలను శోధించండి...",
+    "no_results": "ఎటువంటి అవకాశాలు కనుగొనబడలేదు."
+  },
+  "communities": {
+    "title": "సంచార సమాజాలు",
+    "desc": "వివిధ సమాజాలకు సంబంధించిన సమాచారం మరియు వనరులు.",
+    "search_placeholder": "సమాజాలను శోధించండి...",
+    "no_results": "ఎటువంటి సమాజాలు కనుగొనబడలేదు."
+  },
+  "ai": {
+    "welcome": "Welcome to Sahayak AI",
+    "subtitle": "Your intelligent assistant for government schemes and services",
+    "comm_method": "Communication Method",
+    "comm_desc": "Choose how you want to interact with Sahayak",
+    "type": "Type",
+    "type_desc": "Chat using text messages",
+    "speak": "Speak",
+    "speak_desc": "Use voice commands",
+    "title": "Sahayak AI",
+    "desc": "Your intelligent assistant for discovering schemes and opportunities.",
+    "input_placeholder": "Ask anything...",
+    "send": "Send",
+    "thinking": "Thinking..."
+  },
+  "categories": {
+    "nutrition": "పోషణ",
+    "healthcare": "ఆరోగ్యం",
+    "community_support": "కమ్యూనిటీ మద్దతు",
+    "skill_development": "నైపుణ్యాభివృద్ధి",
+    "women_empowerment": "మహిళా సాధికారత",
+    "disability_support": "వైకల్యం మద్దతు",
+    "employment": "ఉపాధి"
+  },
+  "status": {
+    "active": "క్రియాశీల",
+    "verified": "ధృవీకరించబడింది",
+    "open": "తెరచి ఉంది",
+    "inactive": "క్రియారహితంగా",
+    "closed": "మూసివేయబడింది"
+  },
+  "action": {
+    "volunteer": "వాలంటీర్"
+  },
+  "lang": {
+    "en": "English",
+    "ta": "தமிழ்",
+    "kn": "ಕನ್ನಡ",
+    "hi": "हिन्दी",
+    "te": "తెలుగు"
+  },
+  "stats": {
+    "schemes": "Active Schemes",
+    "ngos": "Verified NGOs",
+    "users": "Community Members",
+    "volunteers": "Active Volunteers"
+  }
+}

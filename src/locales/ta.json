@@ -1,0 +1,165 @@
+{
+  "nav": {
+    "get_started": "Get Started",
+    "dashboard": "Dashboard",
+    "schemes": "Schemes",
+    "ngos": "NGOs",
+    "livelihoods": "Livelihoods",
+    "communities": "Communities",
+    "ai_assistant": "Sahayak AI",
+    "admin": "Admin",
+    "login": "Login",
+    "logout": "Logout",
+    "profile": "Profile",
+    "settings": "Settings",
+    "language": "Language",
+    "schemes_short": "Schemes",
+    "communities_short": "Communities",
+    "livelihoods_short": "Livelihoods",
+    "education": "Education",
+    "help": "Help Desk & FAQs",
+    "community_guidelines": "Community Guidelines"
+  },
+  "hero": {
+    "sdg": "Supporting SDG 1, 4, 8 & 10",
+    "main_heading": "Empowering Nomadic Communities",
+    "main_desc": "Discover schemes, connect with NGOs, and access livelihood opportunities.",
+    "check_eligibility": "Check Eligibility",
+    "explore_schemes": "Explore Schemes",
+    "title": "Jansetu",
+    "subtitle": "A Bridge for People.",
+    "description": "Empowering nomadic and semi-nomadic communities by connecting them with vital government schemes, support organizations, and livelihood opportunities.",
+    "btn_schemes": "Find Schemes",
+    "btn_ai": "Ask Sahayak AI",
+    "btn_explore": "Explore",
+    "btn_learn": "Learn More"
+  },
+  "features": {
+    "schemes": "அரசாங்க திட்டங்கள்",
+    "schemes_desc": "உங்கள் சமூகத்தின் முன்னேற்றத்திற்காக வடிவமைக்கப்பட்ட நூற்றுக்கணக்கான நலத்திட்டங்களை அணுகவும்.",
+    "ngos": "அரசு சாரா நிறுவனங்கள் (NGO Network)",
+    "ngos_desc": "கீழ்மட்டத்தில் பணிபுரியும் சரிபார்க்கப்பட்ட நிறுவனங்களுடன் இணைக்கவும்.",
+    "livelihoods": "வாழ்வாதாரம் & திறன்",
+    "livelihoods_desc": "உங்கள் அருகிலுள்ள வேலை வாய்ப்புகள் மற்றும் திறன் மேம்பாட்டு திட்டங்களைக் கண்டறியவும்.",
+    "ai": "சஹாயக் AI",
+    "ai_desc": "உங்களுக்கு விருப்பமான மொழியில் கேள்விகளுக்கு உடனடி பதில்களைப் பெறுங்கள்."
+  },
+  "footer": {
+    "tagline": "ஜன்சேது - மக்களுக்கான ஒரு பாலம்.",
+    "quick_links": "முக்கிய இணைப்புகள்",
+    "home": "முகப்பு",
+    "contact": "தொடர்பு கொள்ள",
+    "privacy": "தனியுரிமை கொள்கை",
+    "terms": "சேவை விதிமுறைகள்",
+    "copyright": "© 2026 ஜன்சேது. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.",
+    "cookie_policy": "குக்கீ கொள்கை",
+    "accessibility": "அணுகல் அறிக்கை",
+    "help": "உதவி & FAQ",
+    "community_guidelines": "சமூக வழிகாட்டுதல்கள்",
+    "features": "மேடை அம்சங்கள்",
+    "support": "ஆதரவு & வளங்கள்",
+    "legal": "சட்டரீதியான"
+  },
+  "auth": {
+    "welcome": "மீண்டும் வருக",
+    "login_msg": "உங்கள் கணக்கில் உள்நுழையவும்",
+    "email": "மின்னஞ்சல் முகவரி",
+    "password": "கடவுச்சொல்",
+    "sign_in": "உள்நுழைய",
+    "signing_in": "உள்நுழைகிறது...",
+    "no_account": "கணக்கு இல்லையா?",
+    "sign_up": "பதிவு செய்க"
+  },
+  "common": {
+    "search": "தேடு...",
+    "category": "வகை",
+    "state": "மாநிலம்",
+    "district": "மாவட்டம்",
+    "status": "நிலை",
+    "all_categories": "அனைத்து வகைகள்",
+    "all_states": "அனைத்து மாநிலங்கள்",
+    "all_statuses": "அனைத்து நிலைகள்",
+    "apply_now": "இப்போதே விண்ணப்பிக்கவும்",
+    "view_details": "விவரங்களைக் காண்க",
+    "loading": "ஏற்றுகிறது...",
+    "success": "வெற்றி",
+    "error": "பிழை",
+    "save": "சேமி",
+    "cancel": "ரத்துசெய்",
+    "edit": "திருத்து",
+    "delete": "அழி",
+    "add": "சேர்"
+  },
+  "schemes": {
+    "title": "அரசாங்க திட்டங்கள்",
+    "desc": "நலத்திட்டங்கள், உதவித்தொகைகள் மற்றும் நிதி உதவிகளைக் கண்டறியவும்.",
+    "search_placeholder": "திட்டங்களை தேடு...",
+    "no_results": "எந்த திட்டங்களும் கிடைக்கவில்லை."
+  },
+  "ngos": {
+    "no_website": "No Website",
+    "title": "NGO Directory",
+    "desc": "Find support organizations working in your area.",
+    "search_placeholder": "Search NGOs...",
+    "no_results": "No NGOs found."
+  },
+  "livelihoods": {
+    "title": "வாழ்வாதார வாய்ப்புகள்",
+    "desc": "வேலைகள் மற்றும் திறன் அடிப்படையிலான வாய்ப்புகளைக் கண்டறியவும்.",
+    "search_placeholder": "வாய்ப்புகளை தேடு...",
+    "no_results": "எந்த வாய்ப்புகளும் கிடைக்கவில்லை."
+  },
+  "communities": {
+    "title": "நாடோடி சமூகங்கள்",
+    "desc": "வெவ்வேறு சமூகங்களுக்கான தகவல்கள் மற்றும் வளங்கள்.",
+    "search_placeholder": "சமூகங்களை தேடு...",
+    "no_results": "எந்த சமூகங்களும் கிடைக்கவில்லை."
+  },
+  "ai": {
+    "welcome": "Welcome to Sahayak AI",
+    "subtitle": "Your intelligent assistant for government schemes and services",
+    "comm_method": "Communication Method",
+    "comm_desc": "Choose how you want to interact with Sahayak",
+    "type": "Type",
+    "type_desc": "Chat using text messages",
+    "speak": "Speak",
+    "speak_desc": "Use voice commands",
+    "title": "Sahayak AI",
+    "desc": "Your intelligent assistant for discovering schemes and opportunities.",
+    "input_placeholder": "Ask anything...",
+    "send": "Send",
+    "thinking": "Thinking..."
+  },
+  "categories": {
+    "nutrition": "ஊட்டச்சத்து",
+    "healthcare": "சுகாதாரம்",
+    "community_support": "சமூக ஆதரவு",
+    "skill_development": "திறன் மேம்பாடு",
+    "women_empowerment": "பெண்கள் மேம்பாடு",
+    "disability_support": "மாற்றுத்திறனாளி ஆதரவு",
+    "employment": "வேலைவாய்ப்பு"
+  },
+  "status": {
+    "active": "செயலில்",
+    "verified": "சரிபார்க்கப்பட்டது",
+    "open": "திறந்த",
+    "inactive": "செயலற்ற",
+    "closed": "மூடப்பட்டது"
+  },
+  "action": {
+    "volunteer": "தன்னார்வலர்"
+  },
+  "lang": {
+    "en": "English",
+    "ta": "தமிழ்",
+    "kn": "ಕನ್ನಡ",
+    "hi": "हिन्दी",
+    "te": "తెలుగు"
+  },
+  "stats": {
+    "schemes": "Active Schemes",
+    "ngos": "Verified NGOs",
+    "users": "Community Members",
+    "volunteers": "Active Volunteers"
+  }
+}

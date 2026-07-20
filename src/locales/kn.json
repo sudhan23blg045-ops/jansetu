@@ -1,0 +1,165 @@
+{
+  "nav": {
+    "get_started": "Get Started",
+    "dashboard": "Dashboard",
+    "schemes": "Schemes",
+    "ngos": "NGOs",
+    "livelihoods": "Livelihoods",
+    "communities": "Communities",
+    "ai_assistant": "Sahayak AI",
+    "admin": "Admin",
+    "login": "Login",
+    "logout": "Logout",
+    "profile": "Profile",
+    "settings": "Settings",
+    "language": "Language",
+    "schemes_short": "Schemes",
+    "communities_short": "Communities",
+    "livelihoods_short": "Livelihoods",
+    "education": "Education",
+    "help": "Help Desk & FAQs",
+    "community_guidelines": "Community Guidelines"
+  },
+  "hero": {
+    "sdg": "Supporting SDG 1, 4, 8 & 10",
+    "main_heading": "Empowering Nomadic Communities",
+    "main_desc": "Discover schemes, connect with NGOs, and access livelihood opportunities.",
+    "check_eligibility": "Check Eligibility",
+    "explore_schemes": "Explore Schemes",
+    "title": "Jansetu",
+    "subtitle": "A Bridge for People.",
+    "description": "Empowering nomadic and semi-nomadic communities by connecting them with vital government schemes, support organizations, and livelihood opportunities.",
+    "btn_schemes": "Find Schemes",
+    "btn_ai": "Ask Sahayak AI",
+    "btn_explore": "Explore",
+    "btn_learn": "Learn More"
+  },
+  "features": {
+    "schemes": "ಸರ್ಕಾರಿ ಯೋಜನೆಗಳು",
+    "schemes_desc": "ನಿಮ್ಮ ಸಮುದಾಯದ ಏಳಿಗೆಗಾಗಿ ರೂಪಿಸಲಾದ ನೂರಾರು ಕಲ್ಯಾಣ ಯೋಜನೆಗಳನ್ನು ಪಡೆಯಿರಿ.",
+    "ngos": "ಎನ್‌ಜಿಒ ನೆಟ್‌ವರ್ಕ್",
+    "ngos_desc": "ಗ್ರಾಮ ಮಟ್ಟದಲ್ಲಿ ಕೆಲಸ ಮಾಡುವ ಪರಿಶೀಲಿಸಿದ ಸಂಸ್ಥೆಗಳೊಂದಿಗೆ ಸಂಪರ್ಕ ಸಾಧಿಸಿ.",
+    "livelihoods": "ಜೀವನೋಪಾಯ ಮತ್ತು ಕೌಶಲ್ಯ",
+    "livelihoods_desc": "ನಿಮ್ಮ ಹತ್ತಿರದ ಉದ್ಯೋಗ ಅವಕಾಶಗಳು ಮತ್ತು ಕೌಶಲ್ಯ ಅಭಿವೃದ್ಧಿ ಕಾರ್ಯಕ್ರಮಗಳನ್ನು ಹುಡುಕಿ.",
+    "ai": "ಸಹಾಯಕ್ AI",
+    "ai_desc": "ನಿಮ್ಮ ಆದ್ಯತೆಯ ಭಾಷೆಯಲ್ಲಿ ನಿಮ್ಮ ಪ್ರಶ್ನೆಗಳಿಗೆ ತ್ವರಿತ ಉತ್ತರಗಳನ್ನು ಪಡೆಯಿರಿ."
+  },
+  "footer": {
+    "tagline": "ಜನ್ಸೇತು - ಜನರಿಗಾಗಿ ಒಂದು ಸೇತುವೆ.",
+    "quick_links": "ಪ್ರಮುಖ ಲಿಂಕ್‌ಗಳು",
+    "home": "ಮುಖಪುಟ",
+    "contact": "ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ",
+    "privacy": "ಗೌಪ್ಯತಾ ನೀತಿ",
+    "terms": "ಸೇವಾ ಷರತ್ತುಗಳು",
+    "copyright": "© 2026 ಜನ್ಸೇತು. ಎಲ್ಲಾ ಹಕ್ಕುಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ.",
+    "cookie_policy": "ಕುಕಿ ನೀತಿ",
+    "accessibility": "ಪ್ರವೇಶಿಸುವಿಕೆ ಹೇಳಿಕೆ",
+    "help": "ಸಹಾಯ & FAQ",
+    "community_guidelines": "ಸಮುದಾಯ ಮಾರ್ಗಸೂಚಿಗಳು",
+    "features": "ಪ್ಲಾಟ್‌ಫಾರ್ಮ್ ವೈಶಿಷ್ಟ್ಯಗಳು",
+    "support": "ಬೆಂಬಲ ಮತ್ತು ಸಂಪನ್ಮೂಲಗಳು",
+    "legal": "ಕಾನೂನು"
+  },
+  "auth": {
+    "welcome": "ಮತ್ತೊಮ್ಮೆ ಸ್ವಾಗತ",
+    "login_msg": "ನಿಮ್ಮ ಖಾತೆಗೆ ಲಾಗಿನ್ ಆಗಿ",
+    "email": "ಇಮೇಲ್ ವಿಳಾಸ",
+    "password": "ಪಾಸ್ವರ್ಡ್",
+    "sign_in": "ಸೈನ್ ಇನ್",
+    "signing_in": "ಸೈನ್ ಇನ್ ಆಗುತ್ತಿದೆ...",
+    "no_account": "ಖಾತೆ ಇಲ್ಲವೇ?",
+    "sign_up": "ಸೈನ್ ಅಪ್"
+  },
+  "common": {
+    "search": "ಹುಡುಕಿ...",
+    "category": "ವರ್ಗ",
+    "state": "ರಾಜ್ಯ",
+    "district": "ಜಿಲ್ಲೆ",
+    "status": "ಸ್ಥಿತಿ",
+    "all_categories": "ಎಲ್ಲಾ ವರ್ಗಗಳು",
+    "all_states": "ಎಲ್ಲಾ ರಾಜ್ಯಗಳು",
+    "all_statuses": "ಎಲ್ಲಾ ಸ್ಥಿತಿಗಳು",
+    "apply_now": "ಈಗಲೇ ಅರ್ಜಿ ಸಲ್ಲಿಸಿ",
+    "view_details": "ವಿವರಗಳನ್ನು ನೋಡಿ",
+    "loading": "ಲೋಡ್ ಆಗುತ್ತಿದೆ...",
+    "success": "ಯಶಸ್ಸು",
+    "error": "ದೋಷ",
+    "save": "ಉಳಿಸು",
+    "cancel": "ರದ್ದುಮಾಡು",
+    "edit": "ತಿದ್ದು",
+    "delete": "ಅಳಿಸು",
+    "add": "ಸೇರಿಸು"
+  },
+  "schemes": {
+    "title": "ಸರ್ಕಾರಿ ಯೋಜನೆಗಳು",
+    "desc": "ಕಲ್ಯಾಣ ಕಾರ್ಯಕ್ರಮಗಳು, ವಿದ್ಯಾರ್ಥಿವೇತನಗಳು ಮತ್ತು ಆರ್ಥಿಕ ನೆರವು ಹುಡುಕಿ.",
+    "search_placeholder": "ಯೋಜನೆಗಳನ್ನು ಹುಡುಕಿ...",
+    "no_results": "ಯಾವುದೇ ಯೋಜನೆಗಳು ಕಂಡುಬಂದಿಲ್ಲ."
+  },
+  "ngos": {
+    "no_website": "No Website",
+    "title": "NGO Directory",
+    "desc": "Find support organizations working in your area.",
+    "search_placeholder": "Search NGOs...",
+    "no_results": "No NGOs found."
+  },
+  "livelihoods": {
+    "title": "ಜೀವನೋಪಾಯದ ಅವಕಾಶಗಳು",
+    "desc": "ಉದ್ಯೋಗಗಳು ಮತ್ತು ಕೌಶಲ್ಯ ಆಧಾರಿತ ಅವಕಾಶಗಳನ್ನು ಹುಡುಕಿ.",
+    "search_placeholder": "ಅವಕಾಶಗಳನ್ನು ಹುಡುಕಿ...",
+    "no_results": "ಯಾವುದೇ ಅವಕಾಶಗಳು ಕಂಡುಬಂದಿಲ್ಲ."
+  },
+  "communities": {
+    "title": "ಅಲೆಮಾರಿ ಸಮುದಾಯಗಳು",
+    "desc": "ವಿವಿಧ ಸಮುದಾಯಗಳ ಬಗ್ಗೆ ಮಾಹಿತಿ ಮತ್ತು ಸಂಪನ್ಮೂಲಗಳು.",
+    "search_placeholder": "ಸಮುದಾಯಗಳನ್ನು ಹುಡುಕಿ...",
+    "no_results": "ಯಾವುದೇ ಸಮುದಾಯಗಳು ಕಂಡುಬಂದಿಲ್ಲ."
+  },
+  "ai": {
+    "welcome": "Welcome to Sahayak AI",
+    "subtitle": "Your intelligent assistant for government schemes and services",
+    "comm_method": "Communication Method",
+    "comm_desc": "Choose how you want to interact with Sahayak",
+    "type": "Type",
+    "type_desc": "Chat using text messages",
+    "speak": "Speak",
+    "speak_desc": "Use voice commands",
+    "title": "Sahayak AI",
+    "desc": "Your intelligent assistant for discovering schemes and opportunities.",
+    "input_placeholder": "Ask anything...",
+    "send": "Send",
+    "thinking": "Thinking..."
+  },
+  "categories": {
+    "nutrition": "ಪೋಷಣೆ",
+    "healthcare": "ಆರೋಗ್ಯ",
+    "community_support": "ಸಮುದಾಯ ಬೆಂಬಲ",
+    "skill_development": "ಕೌಶಲ್ಯ ಅಭಿವೃದ್ಧಿ",
+    "women_empowerment": "ಮಹಿಳಾ ಸಬಲೀಕರಣ",
+    "disability_support": "ವಿಕಲಚೇತನರ ಬೆಂಬಲ",
+    "employment": "ಉದ್ಯೋಗ"
+  },
+  "status": {
+    "active": "ಸಕ್ರಿಯ",
+    "verified": "ಪರಿಶೀಲಿಸಲಾಗಿದೆ",
+    "open": "ತೆರೆದ",
+    "inactive": "ನಿಷ್ಕ್ರಿಯ",
+    "closed": "ಮುಚ್ಚಲಾಗಿದೆ"
+  },
+  "action": {
+    "volunteer": "ಸ್ವಯಂಸೇವಕ"
+  },
+  "lang": {
+    "en": "English",
+    "ta": "தமிழ்",
+    "kn": "ಕನ್ನಡ",
+    "hi": "हिन्दी",
+    "te": "తెలుగు"
+  },
+  "stats": {
+    "schemes": "Active Schemes",
+    "ngos": "Verified NGOs",
+    "users": "Community Members",
+    "volunteers": "Active Volunteers"
+  }
+}
