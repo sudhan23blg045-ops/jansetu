@@ -37,16 +37,16 @@ export function Footer() {
               </Link>
             </div>
           </div>
-          <div>
+          <div className="hidden md:block">
             <h3 className="font-semibold mb-4 text-foreground">{t("footer.features")}</h3>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li><Link href="/schemes" className="hover:text-primary transition-colors">{t("nav.schemes_short")}</Link></li>
               <li><Link href="/ngos" className="hover:text-primary transition-colors">{t("nav.ngos")}</Link></li>
               <li><Link href="/education" className="hover:text-primary transition-colors">{t("nav.education")}</Link></li>
-              <li><Link href="/livelihood-opportunities" className="hover:text-primary transition-colors">{t("nav.livelihoods_short")}</Link></li>
+              <li><Link href="/livelihoods" className="hover:text-primary transition-colors">{t("nav.livelihoods_short")}</Link></li>
             </ul>
           </div>
-          <div>
+          <div className="hidden md:block">
             <h3 className="font-semibold mb-4 text-foreground">{t("footer.support")}</h3>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li><Link href="/help" className="hover:text-primary transition-colors">{t("footer.help")}</Link></li>
@@ -55,7 +55,7 @@ export function Footer() {
               <li><Link href="#" className="hover:text-primary transition-colors">{t("footer.community_guidelines")}</Link></li>
             </ul>
           </div>
-          <div>
+          <div className="hidden md:block">
             <h3 className="font-semibold mb-4 text-foreground">{t("footer.legal")}</h3>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li><Link href="#" className="hover:text-primary transition-colors">{t("footer.privacy")}</Link></li>
