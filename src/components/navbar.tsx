@@ -140,11 +140,9 @@ export function Navbar() {
           {/* Mobile Menu Toggle */}
           <div className="lg:hidden flex items-center">
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="shrink-0">
-                  <Menu className="h-6 w-6" />
-                  <span className="sr-only">Toggle mobile menu</span>
-                </Button>
+              <SheetTrigger className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground h-9 w-9 shrink-0">
+                <Menu className="h-6 w-6" />
+                <span className="sr-only">Toggle mobile menu</span>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[350px] overflow-y-auto">
                 <SheetHeader className="text-left mb-6">
