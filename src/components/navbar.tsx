@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { supabase } from "@/lib/supabase";
 import { User } from "@supabase/supabase-js";
-import { Home, FileText, Building, Users, Briefcase, Bot, UserCircle, Library, ClipboardList, Menu } from "lucide-react";
+import { Home, FileText, Building, Users, Briefcase, Bot, UserCircle, Library, ClipboardList, Menu, Mail, HelpCircle } from "lucide-react";
 import { useTranslation } from "@/lib/i18n/LanguageContext";
 import {
   Sheet,
@@ -144,55 +144,67 @@ export function Navbar() {
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Toggle mobile menu</span>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[350px] overflow-y-auto">
-                <SheetHeader className="text-left mb-6">
-                  <SheetTitle className="text-xl font-bold text-primary flex items-center gap-2">
-                    <Image src="/images/jansetu-logo.png" alt="Logo" width={32} height={32} />
-                    {t("hero.title")}
+              <SheetContent side="right" className="w-[85vw] sm:w-[350px] overflow-y-auto px-6 py-6 pb-[env(safe-area-inset-bottom)] [&>button]:p-3 [&>button]:top-5 [&>button]:right-5">
+                <SheetHeader className="text-left mb-8 mt-2">
+                  <SheetTitle className="text-xl font-bold text-primary flex items-center gap-3">
+                    <Image src="/images/jansetu-logo.png" alt="Logo" width={32} height={32} className="object-contain" />
+                    <span className="leading-none mt-1">{t("hero.title")}</span>
                   </SheetTitle>
                 </SheetHeader>
-                <div className="flex flex-col gap-6">
-                  <div className="flex flex-col space-y-3">
+                <div className="flex flex-col gap-8 pb-10">
+                  <div className="flex flex-col space-y-1">
                     {[
-                      { href: "/", label: t("footer.home") },
-                      { href: "/schemes", label: t("nav.schemes_short") },
-                      { href: "/nomadic-communities", label: t("nav.communities_short") },
-                      { href: "/ngos", label: t("nav.ngos") },
-                      { href: "/livelihoods", label: t("nav.livelihoods_short") },
-                      { href: "/resources", label: t("nav.resources_short") },
-                      { href: "/sahayak-ai", label: t("nav.ai_assistant") },
-                      { href: "/volunteer", label: "Volunteer" },
-                      { href: "/dashboard", label: "Dashboard" },
-                      { href: "/contact", label: t("footer.contact") },
-                      { href: "/help", label: "FAQs" }
-                    ].map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className={`text-base font-medium transition-colors hover:text-primary ${pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href)) ? 'text-primary' : 'text-muted-foreground'}`}
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
+                      { href: "/", icon: Home, label: t("footer.home") },
+                      { href: "/schemes", icon: FileText, label: t("nav.schemes_short") },
+                      { href: "/nomadic-communities", icon: Users, label: t("nav.communities_short") },
+                      { href: "/ngos", icon: Building, label: t("nav.ngos") },
+                      { href: "/livelihoods", icon: Briefcase, label: t("nav.livelihoods_short") },
+                      { href: "/resources", icon: Library, label: t("nav.resources_short") },
+                      { href: "/sahayak-ai", icon: Bot, label: t("nav.ai_assistant") },
+                      { href: "/volunteer", icon: UserCircle, label: "Volunteer" },
+                      { href: "/dashboard", icon: ClipboardList, label: "Dashboard" },
+                      { href: "/contact", icon: Mail, label: t("footer.contact") },
+                      { href: "/help", icon: HelpCircle, label: "FAQs" }
+                    ].map((item) => {
+                      const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
+                      return (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className={`flex items-center gap-4 text-[16px] font-medium py-3 px-4 rounded-lg transition-all active:scale-[0.98] ${
+                            isActive 
+                              ? 'bg-primary/10 text-primary border-l-4 border-primary rounded-l-none' 
+                              : 'text-muted-foreground hover:bg-muted/50 hover:text-foreground'
+                          }`}
+                        >
+                          <item.icon className={`h-5 w-5 ${isActive ? 'text-primary' : 'text-muted-foreground'}`} />
+                          {item.label}
+                        </Link>
+                      )
+                    })}
                   </div>
 
-                  <div className="flex flex-col space-y-3 pt-6 border-t border-border">
-                    <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="text-base font-medium text-muted-foreground hover:text-primary">{t("footer.privacy")}</Link>
-                    <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="text-base font-medium text-muted-foreground hover:text-primary">{t("footer.terms")}</Link>
+                  <div className="flex flex-col space-y-4 pt-6 border-t border-border px-4">
+                    <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] font-medium text-muted-foreground hover:text-primary transition-colors">
+                      {t("footer.privacy")}
+                    </Link>
+                    <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="text-[15px] font-medium text-muted-foreground hover:text-primary transition-colors">
+                      {t("footer.terms")}
+                    </Link>
                   </div>
 
-                  <div className="flex flex-col space-y-3 pt-6 border-t border-border">
+                  <div className="flex flex-col space-y-4 pt-6 pb-8 border-t border-border mt-auto">
                     {user ? (
-                      <Button variant="outline" onClick={() => { handleLogout(); setIsMobileMenuOpen(false); }} className="w-full justify-start">
+                      <Button variant="outline" size="lg" onClick={() => { handleLogout(); setIsMobileMenuOpen(false); }} className="w-full justify-start text-[16px] h-12">
                         {t("nav.logout")}
                       </Button>
                     ) : (
                       <>
-                        <Button variant="outline" asChild className="w-full justify-start" onClick={() => setIsMobileMenuOpen(false)}>
+                        <Button variant="outline" size="lg" asChild className="w-full justify-start text-[16px] h-12" onClick={() => setIsMobileMenuOpen(false)}>
                           <Link href="/login">{t("nav.login")}</Link>
                         </Button>
-                        <Button asChild className="w-full justify-start" onClick={() => setIsMobileMenuOpen(false)}>
+                        <Button size="lg" asChild className="w-full justify-start text-[16px] h-12" onClick={() => setIsMobileMenuOpen(false)}>
                           <Link href="/register">{t("nav.get_started")}</Link>
                         </Button>
                       </>
