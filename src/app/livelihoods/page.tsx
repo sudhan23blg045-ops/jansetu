@@ -24,7 +24,7 @@ interface LivelihoodOpportunity {
   status: string;
 }
 
-export default function LivelihoodOpportunitiesPage() {
+export default function Page() {
   const [opportunities, setOpportunities] = useState<LivelihoodOpportunity[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
