@@ -64,32 +64,32 @@ export function Navbar() {
           </Link>
         </div>
 
-        {/* Center: Equal Width Grid */}
-        <nav className="hidden lg:grid grid-cols-9 gap-1 xl:gap-2 flex-1 h-full py-2 max-w-6xl mx-auto">
+        {/* Center: Flex Navigation */}
+        <nav className="hidden lg:flex items-center justify-center flex-1 h-full max-w-6xl mx-auto px-4">
           {[
             { href: "/", icon: Home, label: t("footer.home") },
+            { href: "/dashboard", icon: ClipboardList, label: "Dashboard" },
             { href: "/schemes", icon: FileText, label: t("nav.schemes_short") },
             { href: "/ngos", icon: Building, label: t("nav.ngos") },
             { href: "/nomadic-communities", icon: Users, label: t("nav.communities_short") },
             { href: "/livelihoods", icon: Briefcase, label: t("nav.livelihoods_short") },
             { href: "/resources", icon: Library, label: t("nav.resources_short") },
-            { href: "/applications", icon: ClipboardList, label: "Applications" },
             { href: "/volunteer", icon: UserCircle, label: "Volunteer" },
             { href: "/sahayak-ai", icon: Bot, label: t("nav.ai_assistant") },
           ].map((item) => {
             const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
             return (
-              <Link key={item.href} href={item.href} className="relative flex flex-col items-center justify-center gap-1 text-center h-full text-muted-foreground hover:text-primary hover:bg-muted/50 rounded-md transition-colors px-1 group">
+              <Link key={item.href} href={item.href} className="relative flex flex-col items-center justify-center gap-1.5 text-center h-full flex-1 text-muted-foreground hover:text-primary hover:bg-muted/50 rounded-lg transition-colors px-1 group min-w-[70px]">
                 {isActive && (
                   <motion.div
                     layoutId="nav-active"
-                    className="absolute inset-0 bg-primary/10 rounded-md z-0"
+                    className="absolute inset-2 bg-primary/10 rounded-lg z-0"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
-                <motion.div whileHover={{ scale: 1.1 }} className="relative z-10 flex flex-col items-center gap-1">
+                <motion.div whileHover={{ scale: 1.05 }} className="relative z-10 flex flex-col items-center gap-1.5 pt-1">
                   <item.icon className={`h-5 w-5 shrink-0 ${isActive ? "text-primary" : ""}`} />
-                  <span className={`text-[10px] xl:text-xs font-medium leading-tight line-clamp-2 ${isActive ? "text-primary font-bold" : ""}`}>
+                  <span className={`text-[11px] font-medium leading-tight line-clamp-1 ${isActive ? "text-primary font-bold" : ""}`}>
                     {item.label}
                   </span>
                 </motion.div>
@@ -99,9 +99,9 @@ export function Navbar() {
         </nav>
 
         {/* Right Side: Fixed Width & Align Right */}
-        <div className="w-auto lg:w-[280px] xl:w-[350px] shrink-0 flex items-center justify-end gap-2 xl:gap-3 h-full">
+        <div className="w-auto shrink-0 flex items-center justify-end gap-3 h-full">
           <Select value={language} onValueChange={(val) => { if (val) setLanguage(val as Language); }}>
-            <SelectTrigger className="w-[120px] h-9 gap-2 shrink-0">
+            <SelectTrigger className="w-[110px] h-9 gap-2 shrink-0">
               <span>🌐</span>
               <SelectValue placeholder="Language" />
             </SelectTrigger>
@@ -117,23 +117,23 @@ export function Navbar() {
           <ThemeToggle />
           <VoiceGuide />
           
-          <div className="hidden md:flex gap-2 items-center">
+          <div className="hidden lg:flex gap-3 items-center ml-2 border-l pl-4 dark:border-slate-800">
             {user ? (
               <>
-                <Link href="/dashboard" className="flex items-center gap-2 text-sm font-medium hover:text-primary mx-2 whitespace-nowrap">
+                <Link href="/profile" className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors whitespace-nowrap">
                   <UserCircle className="h-5 w-5 shrink-0" />
-                  <span className="max-w-[80px] truncate">{user.user_metadata?.first_name || t('nav.profile')}</span>
+                  <span className="max-w-[80px] truncate">{user.user_metadata?.first_name || "Profile"}</span>
                 </Link>
-                <Button variant="outline" onClick={handleLogout} className="whitespace-nowrap shrink-0">
+                <Button variant="outline" size="sm" onClick={handleLogout} className="whitespace-nowrap shrink-0">
                   {t("nav.logout")}
                 </Button>
               </>
             ) : (
               <>
-                <Button variant="outline" asChild className="whitespace-nowrap shrink-0">
+                <Button variant="ghost" size="sm" asChild className="whitespace-nowrap shrink-0">
                   <Link href="/login">{t("nav.login")}</Link>
                 </Button>
-                <Button asChild className="whitespace-nowrap shrink-0">
+                <Button size="sm" asChild className="whitespace-nowrap shrink-0">
                   <Link href="/register">{t("nav.get_started")}</Link>
                 </Button>
               </>

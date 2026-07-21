@@ -9,7 +9,8 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { 
   FileText, Bookmark, Clock, Bell, UserCircle, Library, Building, Briefcase, Bot, 
-  CheckCircle2, XCircle, FileWarning, Play, Pause, Square, ExternalLink, ArrowRight
+  CheckCircle2, XCircle, FileWarning, Play, Pause, Square, ExternalLink, ArrowRight,
+  Inbox, FileCheck2, LayoutDashboard, Settings
 } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { User } from "@supabase/supabase-js";
@@ -62,7 +63,7 @@ export default function DashboardPage() {
         const ngoRequests = (appsData || []).filter(app => app.application_type === 'NGO Assistance');
         setNgoSupportCount(ngoRequests.length);
 
-        // 3. Fetch Documents (Fallback to checking application document_urls if user_documents table fails)
+        // 3. Fetch Documents
         const { data: docsData, error: docsError } = await supabase
           .from("user_documents")
           .select("*")
@@ -105,14 +106,14 @@ export default function DashboardPage() {
 
   if (loading) {
     return (
-      <div className="container mx-auto px-4 py-8 space-y-8">
+      <div className="container mx-auto px-4 py-8 space-y-8 max-w-7xl">
         <Skeleton className="h-12 w-1/3" />
-        <div className="grid gap-4 md:grid-cols-4">
-          {[1,2,3,4].map(i => <Skeleton key={i} className="h-32 w-full" />)}
+        <div className="grid gap-6 md:grid-cols-4">
+          {[1,2,3,4].map(i => <Skeleton key={i} className="h-36 w-full rounded-2xl" />)}
         </div>
-        <div className="grid gap-4 md:grid-cols-7">
-          <Skeleton className="h-96 w-full col-span-4" />
-          <Skeleton className="h-96 w-full col-span-3" />
+        <div className="grid gap-6 md:grid-cols-12">
+          <Skeleton className="h-96 w-full col-span-8 rounded-2xl" />
+          <Skeleton className="h-96 w-full col-span-4 rounded-2xl" />
         </div>
       </div>
     );
@@ -156,15 +157,15 @@ export default function DashboardPage() {
   const uploadedDocTypes = documents.map(d => d.document_type);
 
   return (
-    <div className="container mx-auto px-4 py-8 space-y-8">
+    <div className="container mx-auto px-4 lg:px-8 py-8 space-y-8 max-w-7xl">
       {/* Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
-        <div className="space-y-2 flex-1 w-full max-w-2xl">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+        <div className="space-y-3 flex-1 w-full max-w-2xl">
           <h1 className="text-3xl font-bold tracking-tight">Welcome back, {firstName}</h1>
-          <p className="text-muted-foreground">Here's an overview of your Jansetu activities and application progress.</p>
+          <p className="text-muted-foreground text-sm">Here's an overview of your Jansetu activities and application progress.</p>
           
-          <div className="pt-4 space-y-2">
-            <div className="flex justify-between text-sm font-medium">
+          <div className="pt-2 space-y-2">
+            <div className="flex justify-between text-xs font-semibold uppercase tracking-wider text-muted-foreground">
               <span>Profile Completion</span>
               <span>{profileCompletion}%</span>
             </div>
@@ -176,107 +177,113 @@ export default function DashboardPage() {
             )}
           </div>
         </div>
-        <Button asChild>
+        <Button className="rounded-xl px-6" asChild>
           <Link href="/profile">Edit Profile</Link>
         </Button>
       </div>
 
-      {/* Top Summary Cards */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card>
+      {/* Top Summary Cards (Equal width/height, 24px gap) */}
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <Card className="rounded-2xl shadow-sm border-muted h-full flex flex-col justify-between">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Applications Submitted</CardTitle>
-            <FileText className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-semibold text-muted-foreground">Applications Submitted</CardTitle>
+            <div className="p-2 bg-primary/10 rounded-lg text-primary"><FileText className="h-4 w-4" /></div>
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{totalApps}</div>
-            <p className="text-xs text-muted-foreground mt-1">
-              <span className="text-yellow-500 font-medium">{underReviewApps} Review</span> • <span className="text-green-500 font-medium">{approvedApps} Approved</span>
+          <CardContent className="pb-4">
+            <div className="text-3xl font-bold">{totalApps}</div>
+            <p className="text-xs font-medium mt-2 flex gap-2">
+              <span className="text-yellow-600 dark:text-yellow-500 bg-yellow-100 dark:bg-yellow-900/30 px-2 py-0.5 rounded-full">{underReviewApps} Review</span>
+              <span className="text-green-600 dark:text-green-500 bg-green-100 dark:bg-green-900/30 px-2 py-0.5 rounded-full">{approvedApps} Approved</span>
             </p>
           </CardContent>
         </Card>
         
-        <Card>
+        <Card className="rounded-2xl shadow-sm border-muted h-full flex flex-col justify-between">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Eligible Schemes</CardTitle>
-            <Bookmark className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-semibold text-muted-foreground">Eligible Schemes</CardTitle>
+            <div className="p-2 bg-blue-500/10 rounded-lg text-blue-500"><Bookmark className="h-4 w-4" /></div>
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{schemes.length}</div>
-            <p className="text-xs text-muted-foreground mt-1">
+          <CardContent className="pb-4">
+            <div className="text-3xl font-bold">{schemes.length}</div>
+            <p className="text-xs text-muted-foreground mt-2 font-medium">
               matching schemes found
             </p>
           </CardContent>
         </Card>
         
-        <Card>
+        <Card className="rounded-2xl shadow-sm border-muted h-full flex flex-col justify-between">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Documents</CardTitle>
-            <Library className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-semibold text-muted-foreground">Documents</CardTitle>
+            <div className="p-2 bg-purple-500/10 rounded-lg text-purple-500"><Library className="h-4 w-4" /></div>
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{documents.length}</div>
-            <p className="text-xs text-muted-foreground mt-1">
+          <CardContent className="pb-4">
+            <div className="text-3xl font-bold">{documents.length}</div>
+            <p className="text-xs text-muted-foreground mt-2 font-medium">
               {requiredDocs.length - documents.length} pending documents
             </p>
           </CardContent>
         </Card>
         
-        <Card>
+        <Card className="rounded-2xl shadow-sm border-muted h-full flex flex-col justify-between">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">NGO & Volunteer Support</CardTitle>
-            <Building className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-semibold text-muted-foreground">NGO & Volunteer</CardTitle>
+            <div className="p-2 bg-orange-500/10 rounded-lg text-orange-500"><Building className="h-4 w-4" /></div>
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{ngoSupportCount}</div>
-            <p className="text-xs text-muted-foreground mt-1">
+          <CardContent className="pb-4">
+            <div className="text-3xl font-bold">{ngoSupportCount}</div>
+            <p className="text-xs text-muted-foreground mt-2 font-medium">
               Active NGO support requests
             </p>
           </CardContent>
         </Card>
       </div>
 
-      {/* Main Content */}
-      <div className="grid gap-6 md:grid-cols-7">
+      {/* Main Content (12-column grid, 24px gap) */}
+      <div className="grid gap-6 lg:grid-cols-12">
         
-        {/* Left Column (Span 4) */}
-        <div className="col-span-1 md:col-span-4 space-y-6">
+        {/* Left Column (Span 8) */}
+        <div className="lg:col-span-8 space-y-6">
           
           {/* Recent Applications */}
-          <Card className="flex flex-col h-full">
-            <CardHeader>
+          <Card className="rounded-2xl shadow-sm border-muted flex flex-col min-h-[300px]">
+            <CardHeader className="p-6">
               <CardTitle>Recent Applications</CardTitle>
               <CardDescription>Status of your submitted forms and requests.</CardDescription>
             </CardHeader>
-            <CardContent className="flex-1">
+            <CardContent className="flex-1 p-6 pt-0 flex flex-col">
               {applications.length === 0 ? (
-                <div className="flex flex-col items-center justify-center py-10 text-center space-y-4">
-                  <FileText className="h-10 w-10 text-muted-foreground/50" />
-                  <p className="text-muted-foreground">You haven't applied for any schemes yet.</p>
-                  <Button variant="outline" asChild>
-                    <Link href="/schemes">Browse Government Schemes</Link>
+                <div className="flex-1 flex flex-col items-center justify-center text-center space-y-4 py-8">
+                  <div className="h-16 w-16 bg-muted rounded-full flex items-center justify-center">
+                    <FileCheck2 className="h-8 w-8 text-muted-foreground/60" />
+                  </div>
+                  <div className="space-y-1">
+                    <p className="font-semibold text-foreground">No applications yet</p>
+                    <p className="text-sm text-muted-foreground">Browse schemes and submit your first application.</p>
+                  </div>
+                  <Button variant="outline" className="rounded-xl mt-2" asChild>
+                    <Link href="/schemes">Browse Schemes</Link>
                   </Button>
                 </div>
               ) : (
-                <div className="space-y-4">
+                <div className="space-y-3">
                   {applications.slice(0, 5).map((app) => (
-                    <div key={app.id} className="flex flex-col sm:flex-row sm:items-center justify-between p-4 border rounded-lg bg-card gap-4">
+                    <div key={app.id} className="flex flex-col sm:flex-row sm:items-center justify-between p-4 border border-border/50 rounded-xl bg-card/50 hover:bg-muted/30 transition-colors gap-4">
                       <div>
-                        <h4 className="font-semibold text-sm">{app.related_item || app.application_type}</h4>
+                        <h4 className="font-semibold text-sm text-foreground">{app.related_item || app.application_type}</h4>
                         <p className="text-xs text-muted-foreground mt-1">
                           {format(new Date(app.created_at || new Date()), 'MMM dd, yyyy')}
                         </p>
                       </div>
                       <div className="flex items-center gap-3">
-                        <Badge variant={
-                          app.status === 'Approved' ? 'default' : 
-                          app.status === 'Rejected' ? 'destructive' : 
-                          'secondary'
-                        }>
+                        <Badge variant="outline" className={`rounded-full px-2.5 py-0.5 font-medium border-0 ${
+                          app.status === 'Approved' ? 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400' : 
+                          app.status === 'Rejected' ? 'bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-400' : 
+                          'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-400'
+                        }`}>
                           {app.status}
                         </Badge>
-                        <Button variant="ghost" size="sm" asChild>
-                          <Link href={`/applications/${app.id}`}>View Details</Link>
+                        <Button variant="ghost" size="sm" className="rounded-lg hover:bg-background" asChild>
+                          <Link href={`/applications/${app.id}`}>Details</Link>
                         </Button>
                       </div>
                     </div>
@@ -286,105 +293,122 @@ export default function DashboardPage() {
             </CardContent>
           </Card>
           
-          {/* Analytics */}
-          <Card>
-            <CardHeader>
+          {/* Analytics (Redesigned) */}
+          <Card className="rounded-2xl shadow-sm border-muted min-h-[350px]">
+            <CardHeader className="p-6">
               <CardTitle>Analytics</CardTitle>
               <CardDescription>Your application activity and success rate.</CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-6 pt-0">
               <DashboardCharts statusData={statusData} monthlyData={monthlyData} />
             </CardContent>
           </Card>
 
         </div>
 
-        {/* Right Column (Span 3) */}
-        <div className="col-span-1 md:col-span-3 space-y-6">
+        {/* Right Column (Span 4) */}
+        <div className="lg:col-span-4 space-y-6">
           
-          {/* Recommended Schemes */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Recommended For You</CardTitle>
-              <CardDescription>Government schemes matching your profile.</CardDescription>
+          {/* Quick Actions (2x2 Grid) */}
+          <Card className="rounded-2xl shadow-sm border-muted">
+            <CardHeader className="p-6 pb-4">
+              <CardTitle className="text-lg">Quick Actions</CardTitle>
             </CardHeader>
-            <CardContent>
-              {profileCompletion < 50 ? (
-                <div className="text-center py-6">
-                  <p className="text-sm text-muted-foreground mb-4">Complete your profile to receive personalized recommendations.</p>
-                  <Button variant="outline" size="sm" asChild><Link href="/profile">Edit Profile</Link></Button>
-                </div>
-              ) : schemes.length === 0 ? (
-                <div className="text-center py-6 text-sm text-muted-foreground">No new recommendations available.</div>
-              ) : (
-                <div className="space-y-4">
-                  {schemes.map(scheme => (
-                    <div key={scheme.id} className="p-3 border rounded-lg bg-muted/30">
-                      <h4 className="font-semibold text-sm line-clamp-1">{scheme.scheme_name}</h4>
-                      <p className="text-xs text-muted-foreground mt-1 line-clamp-2">{scheme.description}</p>
-                      <div className="mt-3 flex gap-2">
-                        <Button variant="default" size="sm" className="w-full text-xs h-8" asChild>
-                          <Link href={`/applications/new?scheme=${scheme.id}`}>Apply Now</Link>
-                        </Button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
+            <CardContent className="p-6 pt-0 grid grid-cols-2 gap-3">
+              <Link href="/schemes" className="flex flex-col items-center justify-center gap-2 p-4 rounded-xl border border-border/50 bg-card hover:bg-primary/5 hover:border-primary/30 transition-all text-center group">
+                <FileText className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                <span className="text-xs font-semibold">Apply Scheme</span>
+              </Link>
+              <Link href="/profile" className="flex flex-col items-center justify-center gap-2 p-4 rounded-xl border border-border/50 bg-card hover:bg-primary/5 hover:border-primary/30 transition-all text-center group">
+                <Library className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                <span className="text-xs font-semibold">Upload Docs</span>
+              </Link>
+              <Link href="/livelihoods" className="flex flex-col items-center justify-center gap-2 p-4 rounded-xl border border-border/50 bg-card hover:bg-primary/5 hover:border-primary/30 transition-all text-center group">
+                <Briefcase className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                <span className="text-xs font-semibold">Livelihoods</span>
+              </Link>
+              <Link href="/ngos" className="flex flex-col items-center justify-center gap-2 p-4 rounded-xl border border-border/50 bg-card hover:bg-primary/5 hover:border-primary/30 transition-all text-center group">
+                <Building className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                <span className="text-xs font-semibold">Browse NGOs</span>
+              </Link>
+            </CardContent>
+          </Card>
+
+          {/* Sahayak AI Assistant */}
+          <Card className="rounded-2xl shadow-sm border-primary/20 bg-primary/5 overflow-hidden">
+            <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
+              <Bot className="h-24 w-24" />
+            </div>
+            <CardHeader className="p-6 pb-2 relative z-10">
+              <CardTitle className="flex items-center gap-2 text-primary text-lg">
+                <Bot className="h-5 w-5" /> Sahayak AI Assistant
+              </CardTitle>
+              <CardDescription className="text-primary/70">
+                Get instant help with your applications.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="p-6 pt-2 space-y-2 relative z-10">
+              <Button variant="outline" className="w-full justify-between rounded-xl bg-background/50 hover:bg-background border-primary/20 hover:text-primary" asChild>
+                <Link href="/sahayak-ai">Find Eligible Schemes <ArrowRight className="h-4 w-4" /></Link>
+              </Button>
+              <Button variant="outline" className="w-full justify-between rounded-xl bg-background/50 hover:bg-background border-primary/20 hover:text-primary" asChild>
+                <Link href="/sahayak-ai">Application Status <ArrowRight className="h-4 w-4" /></Link>
+              </Button>
             </CardContent>
           </Card>
 
           {/* My Documents */}
-          <Card>
-            <CardHeader>
-              <CardTitle>My Documents</CardTitle>
-              <CardDescription>Upload status of required paperwork.</CardDescription>
+          <Card className="rounded-2xl shadow-sm border-muted">
+            <CardHeader className="p-6 pb-4">
+              <CardTitle className="text-lg">My Documents</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-6 pt-0">
               <div className="space-y-3">
                 {requiredDocs.map(docName => {
                   const isUploaded = uploadedDocTypes.includes(docName);
                   return (
-                    <div key={docName} className="flex items-center justify-between text-sm">
-                      <span className="font-medium text-muted-foreground">{docName}</span>
+                    <div key={docName} className="flex items-center justify-between text-sm py-1 border-b border-border/40 last:border-0">
+                      <span className="font-medium text-foreground">{docName}</span>
                       {isUploaded ? (
-                        <span className="flex items-center text-green-500 gap-1"><CheckCircle2 className="h-4 w-4"/> Uploaded</span>
+                        <span className="flex items-center text-green-600 dark:text-green-500 gap-1.5 font-medium"><CheckCircle2 className="h-4 w-4"/> Uploaded</span>
                       ) : (
-                        <span className="flex items-center text-red-500 gap-1"><XCircle className="h-4 w-4"/> Missing</span>
+                        <span className="flex items-center text-red-600 dark:text-red-500 gap-1.5 font-medium"><XCircle className="h-4 w-4"/> Missing</span>
                       )}
                     </div>
                   );
                 })}
-                <Button variant="outline" className="w-full mt-4" asChild>
-                   <Link href="/profile">Upload Missing Documents</Link>
-                </Button>
               </div>
             </CardContent>
           </Card>
 
           {/* Notifications */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+          <Card className="rounded-2xl shadow-sm border-muted flex flex-col min-h-[250px]">
+            <CardHeader className="p-6 pb-4">
+              <CardTitle className="flex items-center gap-2 text-lg">
                 Notifications
-                {notifications.length > 0 && <Badge variant="secondary" className="rounded-full px-2 py-0.5">{notifications.length}</Badge>}
+                {notifications.length > 0 && <Badge className="bg-primary text-primary-foreground rounded-full px-2 py-0.5">{notifications.length}</Badge>}
               </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="flex-1 p-6 pt-0 flex flex-col">
               {notifications.length === 0 ? (
-                <div className="text-center py-6 text-sm text-muted-foreground">No new notifications.</div>
+                <div className="flex-1 flex flex-col items-center justify-center text-center space-y-3 py-6">
+                  <div className="h-12 w-12 bg-muted rounded-full flex items-center justify-center">
+                    <Inbox className="h-6 w-6 text-muted-foreground/60" />
+                  </div>
+                  <p className="text-sm font-medium text-muted-foreground">All caught up!</p>
+                </div>
               ) : (
                 <div className="space-y-3">
                   {notifications.map(n => (
-                    <div key={n.id} className="flex gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors">
-                      <div className="mt-0.5">
+                    <div key={n.id} className="flex gap-3 p-3 border border-border/40 rounded-xl hover:bg-muted/40 transition-colors">
+                      <div className="mt-0.5 shrink-0">
                          {n.type === 'success' ? <CheckCircle2 className="h-4 w-4 text-green-500" /> : 
                           n.type === 'warning' ? <FileWarning className="h-4 w-4 text-yellow-500" /> :
                           <Bell className="h-4 w-4 text-blue-500" />}
                       </div>
-                      <div>
-                        <p className="text-sm font-medium leading-none">{n.title}</p>
-                        <p className="text-xs text-muted-foreground mt-1">{n.message}</p>
+                      <div className="space-y-1">
+                        <p className="text-sm font-semibold leading-none">{n.title}</p>
+                        <p className="text-xs text-muted-foreground line-clamp-2">{n.message}</p>
                       </div>
                     </div>
                   ))}
@@ -396,39 +420,6 @@ export default function DashboardPage() {
         </div>
       </div>
       
-      {/* Quick Actions & Widgets */}
-      <div className="grid gap-4 md:grid-cols-3">
-        <Card className="bg-primary/5 border-primary/20">
-          <CardHeader className="pb-2">
-            <CardTitle className="flex items-center gap-2 text-primary">
-              <Bot className="h-5 w-5" /> Sahayak AI Assistant
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-2">
-            <Button variant="ghost" className="w-full justify-start hover:bg-primary/10 hover:text-primary" asChild>
-              <Link href="/sahayak-ai">Find Eligible Schemes <ArrowRight className="ml-auto h-4 w-4" /></Link>
-            </Button>
-            <Button variant="ghost" className="w-full justify-start hover:bg-primary/10 hover:text-primary" asChild>
-              <Link href="/sahayak-ai">Check Application Status <ArrowRight className="ml-auto h-4 w-4" /></Link>
-            </Button>
-          </CardContent>
-        </Card>
-        
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="flex items-center gap-2">
-               Quick Actions
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="grid grid-cols-2 gap-2">
-            <Button variant="outline" size="sm" asChild><Link href="/schemes">Apply for Scheme</Link></Button>
-            <Button variant="outline" size="sm" asChild><Link href="/ngos">Browse NGOs</Link></Button>
-            <Button variant="outline" size="sm" asChild><Link href="/livelihoods">Find Livelihoods</Link></Button>
-            <Button variant="outline" size="sm" asChild><Link href="/profile">Upload Docs</Link></Button>
-          </CardContent>
-        </Card>
-      </div>
-
     </div>
   );
 }
