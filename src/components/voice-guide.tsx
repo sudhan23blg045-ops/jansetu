@@ -111,16 +111,24 @@ export function VoiceGuide() {
     if (textToSpeak === key) return; 
 
     const utterance = new SpeechSynthesisUtterance(textToSpeak);
-    utterance.lang = getLangTag(language);
+    const langTag = getLangTag(language);
+    utterance.lang = langTag;
     
     // Try to find a voice that matches the language
     const voices = window.speechSynthesis.getVoices();
-    const targetVoice = voices.find(v => v.lang.startsWith(utterance.lang.split('-')[0])) || 
-                        voices.find(v => v.default);
+    // Match by exact language tag (e.g. hi-IN) or just the primary subtag (e.g. hi)
+    const exactMatch = voices.find(v => v.lang === langTag || v.lang.replace('_', '-') === langTag);
+    const partialMatch = voices.find(v => v.lang.startsWith(langTag.split('-')[0]));
+    
+    const targetVoice = exactMatch || partialMatch || voices.find(v => v.default);
                         
     if (targetVoice) {
       utterance.voice = targetVoice;
     }
+    
+    console.log("[VoiceGuide] App Language:", language);
+    console.log("[VoiceGuide] Utterance Lang:", utterance.lang);
+    console.log("[VoiceGuide] Selected Voice:", targetVoice ? targetVoice.name : "Default");
 
     utterance.onstart = () => {
       setIsPlaying(true);
