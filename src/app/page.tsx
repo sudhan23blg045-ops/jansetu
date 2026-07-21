@@ -109,11 +109,6 @@ export default function Home() {
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Our platform provides a secure digital identity integration, ensuring these communities can seamlessly discover and apply for schemes, connect with NGOs, and access vital educational resources without geographic barriers.
               </p>
-              <motion.div whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
-                <Button variant="link" className="px-0 text-primary group" asChild>
-                  <Link href="/about">Read our full mission <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                </Button>
-              </motion.div>
             </motion.div>
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={FADE_IN_UP} className="relative aspect-square md:aspect-video rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.12)]">
                <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent z-10"></div>
@@ -236,7 +231,9 @@ export default function Home() {
                             <span className="text-xs font-semibold uppercase tracking-wider text-primary">{scheme.tag}</span>
                             <CardTitle className="text-lg">{scheme.title}</CardTitle>
                           </div>
-                          <Button variant="outline" size="sm" className="transition-all hover:bg-primary hover:text-primary-foreground">Apply</Button>
+                          <Button variant="outline" size="sm" asChild className="transition-all hover:bg-primary hover:text-primary-foreground">
+                            <Link href="/schemes">Apply</Link>
+                          </Button>
                         </div>
                       </CardHeader>
                     </Card>
@@ -256,13 +253,23 @@ export default function Home() {
                   <Link href="/ngos">View Directory <ArrowRight className="ml-2 h-4 w-4" /></Link>
                 </Button>
               </motion.div>
-              <div className="grid grid-cols-2 gap-4">
-                {[1, 2, 3, 4].map((i) => (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                  { name: "Centre for Integral Rural Welfare (CIRW)", location: "Anekal, Karnataka", desc: "Rural development, education, women & child welfare." },
+                  { name: "Prachin Foundation", location: "Bengaluru, Karnataka", desc: "Tribal communities, healthcare, education, and livelihood support." },
+                  { name: "Anekal Rehabilitation Education and Development (READ) Centre", location: "Anekal, Karnataka", desc: "Education, rehabilitation, and community development." },
+                  { name: "Upkriti Organization", location: "Bengaluru, Karnataka", desc: "Skill development, education, and empowerment of marginalized communities." }
+                ].map((ngo, i) => (
                   <motion.div key={i} variants={FADE_IN_UP} whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
-                    <Card className="flex items-center justify-center p-6 hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] transition-all h-full">
-                       <div className="opacity-50 grayscale hover:grayscale-0 transition-all font-bold text-lg text-muted-foreground hover:text-foreground">
-                          NGO Partner {i}
+                    <Card className="flex flex-col p-5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] transition-all h-full bg-card">
+                       <h3 className="font-bold text-sm text-foreground mb-1 line-clamp-2">{ngo.name}</h3>
+                       <div className="flex items-center text-xs text-muted-foreground mb-3">
+                         <Map className="h-3 w-3 mr-1" /> {ngo.location}
                        </div>
+                       <p className="text-xs text-muted-foreground mb-4 line-clamp-2 flex-1">{ngo.desc}</p>
+                       <Button variant="ghost" size="sm" className="w-full text-xs justify-between" asChild>
+                         <Link href="/ngos">Learn More <ArrowRight className="h-3 w-3" /></Link>
+                       </Button>
                     </Card>
                   </motion.div>
                 ))}
