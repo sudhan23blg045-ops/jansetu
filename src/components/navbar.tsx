@@ -7,6 +7,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { VoiceGuide } from "@/components/voice-guide";
 import { supabase } from "@/lib/supabase";
 import { User } from "@supabase/supabase-js";
 import { Home, FileText, Building, Users, Briefcase, Bot, UserCircle, Library, ClipboardList, Menu, Mail, HelpCircle } from "lucide-react";
@@ -114,6 +115,8 @@ export function Navbar() {
           </Select>
           
           <ThemeToggle />
+          <VoiceGuide />
+          
           <div className="hidden md:flex gap-2 items-center">
             {user ? (
               <>

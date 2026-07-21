@@ -214,5 +214,18 @@
     "ngos": "Verified NGOs",
     "users": "Community Members",
     "volunteers": "Active Volunteers"
+  },
+  "voice": {
+    "home": "Welcome to JanSetu. Your bridge to government schemes, NGOs, and community resources. Select an option from the navigation menu to get started.",
+    "schemes": "Welcome to the Government Schemes page. Here you can browse available schemes. Select a scheme to view details. If you are eligible, click Apply.",
+    "communities": "Welcome to the Nomadic Communities page. Here you can explore different communities and their cultural heritage.",
+    "ngos": "Welcome to the NGOs page. Browse verified Non-Governmental Organizations working for community welfare.",
+    "livelihoods": "Welcome to the Livelihoods page. Explore job opportunities and skill development programs tailored for you.",
+    "resources": "Welcome to the Resources page. Access educational materials and useful documents here.",
+    "applications": "Welcome to your Applications. Here you can track the status of your submitted applications.",
+    "applications_new": "Please enter your details carefully. Upload the required documents one by one. After completing all fields, press Submit.",
+    "volunteer": "Welcome to the Volunteer page. Register to offer your skills and help communities in need.",
+    "contact": "Welcome to the Contact Us page. If you need assistance, please fill out the form or use our contact details.",
+    "default": "Welcome to JanSetu. Use the navigation menu to explore our services."
   }
 }
