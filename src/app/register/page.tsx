@@ -60,28 +60,7 @@ export default function RegisterPage() {
       return;
     }
 
-    if (data?.user) {
-      // Explicitly insert into profiles table if no DB trigger exists
-      const { error: profileError } = await supabase.from('profiles').upsert([
-        {
-          id: data.user.id,
-          first_name: firstName,
-          last_name: lastName,
-          email: email,
-          phone: phone,
-          role: 'user'
-        }
-      ], { onConflict: 'id' });
-
-      if (profileError) {
-        console.error("Error creating profile:", profileError);
-        setError("Account was created, but we failed to setup your profile. Please contact support.");
-        setLoading(false);
-        return;
-      }
-    }
-
-    setSuccess("Registration successful! Please proceed to login.");
+    setSuccess("Registration successful! Please check your email to verify your account or proceed to login.");
     setLoading(false);
     
     // Automatically redirect after a delay
