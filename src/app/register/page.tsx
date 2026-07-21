@@ -13,6 +13,7 @@ export default function RegisterPage() {
   const router = useRouter();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -25,6 +26,14 @@ export default function RegisterPage() {
     setLoading(true);
     setError(null);
     setSuccess(null);
+
+    // Validate phone number (10 digits for India)
+    const phoneRegex = /^[0-9]{10}$/;
+    if (!phoneRegex.test(phone)) {
+      setError("Please enter a valid 10-digit phone number");
+      setLoading(false);
+      return;
+    }
 
     if (password !== confirmPassword) {
       setError("Passwords do not match");
@@ -39,6 +48,8 @@ export default function RegisterPage() {
         data: {
           first_name: firstName,
           last_name: lastName,
+          phone: phone,
+          email: email
         }
       }
     });
@@ -46,14 +57,37 @@ export default function RegisterPage() {
     if (error) {
       setError(error.message);
       setLoading(false);
-    } else {
-      setSuccess("Registration successful! Please check your email to verify your account or proceed to login.");
-      setLoading(false);
-      // Optional: Automatically redirect after a delay, or user can click 'Login here'
-      setTimeout(() => {
-        router.push("/login");
-      }, 3000);
+      return;
     }
+
+    if (data?.user) {
+      // Explicitly insert into profiles table if no DB trigger exists
+      const { error: profileError } = await supabase.from('profiles').upsert([
+        {
+          id: data.user.id,
+          first_name: firstName,
+          last_name: lastName,
+          email: email,
+          phone: phone,
+          role: 'user'
+        }
+      ], { onConflict: 'id' });
+
+      if (profileError) {
+        console.error("Error creating profile:", profileError);
+        setError("Account was created, but we failed to setup your profile. Please contact support.");
+        setLoading(false);
+        return;
+      }
+    }
+
+    setSuccess("Registration successful! Please proceed to login.");
+    setLoading(false);
+    
+    // Automatically redirect after a delay
+    setTimeout(() => {
+      router.push("/login");
+    }, 3000);
   };
 
   return (
@@ -99,6 +133,19 @@ export default function RegisterPage() {
                 />
               </div>
             </div>
+            
+            <div className="space-y-2">
+              <Label htmlFor="phone">Phone Number</Label>
+              <Input 
+                id="phone" 
+                type="tel" 
+                placeholder="9876543210" 
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                required
+              />
+            </div>
+
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input 
