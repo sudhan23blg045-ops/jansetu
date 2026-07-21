@@ -116,14 +116,32 @@ export function VoiceGuide() {
     
     // Try to find a voice that matches the language
     const voices = window.speechSynthesis.getVoices();
+    
+    // Debug output
+    console.table(voices.map(v => ({ name: v.name, lang: v.lang, default: v.default })));
+    
     // Match by exact language tag (e.g. hi-IN) or just the primary subtag (e.g. hi)
     const exactMatch = voices.find(v => v.lang === langTag || v.lang.replace('_', '-') === langTag);
     const partialMatch = voices.find(v => v.lang.startsWith(langTag.split('-')[0]));
     
-    const targetVoice = exactMatch || partialMatch || voices.find(v => v.default);
+    const targetVoice = exactMatch || partialMatch || voices.find(v => v.default) || voices[0];
                         
     if (targetVoice) {
       utterance.voice = targetVoice;
+    }
+    
+    // Show toast if native voice not found
+    if (!exactMatch && !partialMatch && language !== 'en') {
+      const langNames: Record<string, string> = {
+        ta: "Tamil",
+        kn: "Kannada",
+        hi: "Hindi",
+        te: "Telugu"
+      };
+      const name = langNames[language] || language;
+      toast.info(`A native ${name} voice is not available on this device. Using the default system voice.`, {
+        duration: 4000
+      });
     }
     
     console.log("[VoiceGuide] App Language:", language);
