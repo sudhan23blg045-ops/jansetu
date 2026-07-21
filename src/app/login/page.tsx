@@ -13,7 +13,7 @@ import { useTranslation } from "@/lib/i18n/LanguageContext";
 
 export default function LoginPage() {
   const router = useRouter();
-  const [email, setEmail] = useState("");
+  const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -24,8 +24,28 @@ export default function LoginPage() {
     setLoading(true);
     setError(null);
 
+    let emailToLogin = identifier.trim();
+
+    // Determine if input is email or phone. Basic check for '@'
+    const isEmail = emailToLogin.includes("@");
+
+    if (!isEmail) {
+      // Input is treated as a phone number. Look up the corresponding email.
+      const { data: email, error: lookupError } = await supabase.rpc('get_email_by_phone', { 
+        p_phone: emailToLogin 
+      });
+
+      if (lookupError || !email) {
+        setError("No account found with this phone number.");
+        setLoading(false);
+        return;
+      }
+      
+      emailToLogin = email;
+    }
+
     const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
-      email,
+      email: emailToLogin,
       password,
     });
 
@@ -44,7 +64,6 @@ export default function LoginPage() {
 
       if (profileError) {
         console.error("Error fetching profile:", profileError);
-        // Fallback to normal user dashboard if profile fetch fails
         router.push("/dashboard");
       } else if (profile?.role === 'admin') {
         router.push("/admin/dashboard");
@@ -74,13 +93,13 @@ export default function LoginPage() {
               </div>
             )}
             <div className="space-y-2">
-              <Label htmlFor="email">{t("auth.email")}</Label>
+              <Label htmlFor="identifier">Email or Phone Number</Label>
               <Input 
-                id="email" 
-                type="email" 
-                placeholder="m@example.com" 
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                id="identifier" 
+                type="text" 
+                placeholder="m@example.com or +91 00000 00000" 
+                value={identifier}
+                onChange={(e) => setIdentifier(e.target.value)}
                 required
               />
             </div>
