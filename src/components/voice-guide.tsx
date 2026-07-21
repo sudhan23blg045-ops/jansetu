@@ -6,14 +6,6 @@ import { useTranslation } from "@/lib/i18n/LanguageContext";
 import { Volume2, VolumeX, Play, Pause, Square } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 export function VoiceGuide() {
   const pathname = usePathname();
@@ -182,68 +174,97 @@ export function VoiceGuide() {
     }
   }, []);
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Close when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('.voice-guide-container')) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   if (!hasMounted) return null;
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger 
+    <div className="relative voice-guide-container">
+      <button
+        type="button"
+        onClick={(e) => {
+          e.preventDefault();
+          setIsOpen(!isOpen);
+        }}
         className={`inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground h-10 w-10 shrink-0 ${isEnabled ? 'text-primary' : 'text-muted-foreground'} ${isPlaying && !isPaused ? 'animate-pulse' : ''}`}
       >
         {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
         <span className="sr-only">Voice Guide Controls</span>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-56">
-        <DropdownMenuLabel>Sahayak Voice Guide</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        
-        <DropdownMenuItem onClick={toggleEnable} className="justify-between cursor-pointer">
-          {isEnabled ? "Disable Voice Guide" : "Enable Voice Guide"}
-          <span className={`w-2 h-2 rounded-full ${isEnabled ? 'bg-green-500' : 'bg-red-500'}`}></span>
-        </DropdownMenuItem>
-        
-        <DropdownMenuSeparator />
-        
-        <div className="flex justify-between items-center px-2 py-2 gap-1">
-          <Button 
-            variant={isPlaying && !isPaused ? "secondary" : "ghost"} 
-            size="icon" 
-            onClick={play} 
-            disabled={!isEnabled || isMuted || (isPlaying && !isPaused)}
-            title="Play"
-          >
-            <Play className="h-4 w-4" />
-          </Button>
+      </button>
+
+      {isOpen && (
+        <div className="absolute right-0 top-full mt-2 w-56 rounded-md border bg-popover p-2 text-popover-foreground shadow-md outline-none z-50">
+          <div className="px-2 py-1.5 text-sm font-semibold">Sahayak Voice Guide</div>
+          <div className="h-px bg-muted my-1" />
           
-          <Button 
-            variant={isPaused ? "secondary" : "ghost"} 
-            size="icon" 
-            onClick={pause} 
-            disabled={!isEnabled || isMuted || (!isPlaying && !isPaused)}
-            title="Pause"
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              toggleEnable();
+            }}
+            className="relative flex w-full cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors hover:bg-accent hover:text-accent-foreground justify-between"
           >
-            <Pause className="h-4 w-4" />
-          </Button>
+            {isEnabled ? "Disable Voice Guide" : "Enable Voice Guide"}
+            <span className={`w-2 h-2 rounded-full ${isEnabled ? 'bg-green-500' : 'bg-red-500'}`}></span>
+          </button>
           
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            onClick={stop} 
-            disabled={!isEnabled || isMuted || (!isPlaying && !isPaused)}
-            title="Stop"
-          >
-            <Square className="h-4 w-4" />
-          </Button>
+          <div className="h-px bg-muted my-1" />
           
-          <Button 
-            variant={isMuted ? "secondary" : "ghost"} 
-            size="icon" 
-            onClick={toggleMute}
-            title={isMuted ? "Unmute" : "Mute"}
-          >
-            <VolumeX className="h-4 w-4" />
-          </Button>
+          <div className="flex justify-between items-center px-2 py-2 gap-1">
+            <Button 
+              variant={isPlaying && !isPaused ? "secondary" : "ghost"} 
+              size="icon" 
+              onClick={(e) => { e.preventDefault(); play(); }} 
+              disabled={!isEnabled || isMuted || (isPlaying && !isPaused)}
+              title="Play"
+            >
+              <Play className="h-4 w-4" />
+            </Button>
+            
+            <Button 
+              variant={isPaused ? "secondary" : "ghost"} 
+              size="icon" 
+              onClick={(e) => { e.preventDefault(); pause(); }} 
+              disabled={!isEnabled || isMuted || (!isPlaying && !isPaused)}
+              title="Pause"
+            >
+              <Pause className="h-4 w-4" />
+            </Button>
+            
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={(e) => { e.preventDefault(); stop(); }} 
+              disabled={!isEnabled || isMuted || (!isPlaying && !isPaused)}
+              title="Stop"
+            >
+              <Square className="h-4 w-4" />
+            </Button>
+            
+            <Button 
+              variant={isMuted ? "secondary" : "ghost"} 
+              size="icon" 
+              onClick={(e) => { e.preventDefault(); toggleMute(); }}
+              title={isMuted ? "Unmute" : "Mute"}
+            >
+              <VolumeX className="h-4 w-4" />
+            </Button>
+          </div>
         </div>
-      </DropdownMenuContent>
-    </DropdownMenu>
+      )}
+    </div>
   );
 }
