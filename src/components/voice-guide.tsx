@@ -92,7 +92,12 @@ export function VoiceGuide() {
   };
 
   const play = () => {
-    if (typeof window === "undefined" || !window.speechSynthesis || isMuted) return;
+    if (typeof window === "undefined" || isMuted) return;
+
+    if (!('speechSynthesis' in window)) {
+      toast.error("Voice Guide is not supported on this browser.");
+      return;
+    }
 
     if (isPaused) {
       window.speechSynthesis.resume();
@@ -114,11 +119,21 @@ export function VoiceGuide() {
     const langTag = getLangTag(language);
     utterance.lang = langTag;
     
-    // Try to find a voice that matches the language
-    const voices = window.speechSynthesis.getVoices();
+    let voices = window.speechSynthesis.getVoices();
     
-    // Debug output
-    console.table(voices.map(v => ({ name: v.name, lang: v.lang, default: v.default })));
+    // Retry if voices are not loaded (Chrome/Edge async loading)
+    if (voices.length === 0) {
+      // Fallback: we wait for onvoiceschanged or try again slightly later
+      console.warn("[VoiceGuide] getVoices() returned empty, retrying...");
+      setTimeout(() => {
+        if (window.speechSynthesis.getVoices().length > 0) {
+           play();
+        } else {
+           toast.error("Voice playback failed on this device.");
+        }
+      }, 500);
+      return;
+    }
     
     // Match by exact language tag (e.g. hi-IN) or just the primary subtag (e.g. hi)
     const exactMatch = voices.find(v => v.lang === langTag || v.lang.replace('_', '-') === langTag);
@@ -144,9 +159,13 @@ export function VoiceGuide() {
       });
     }
     
-    console.log("[VoiceGuide] App Language:", language);
-    console.log("[VoiceGuide] Utterance Lang:", utterance.lang);
-    console.log("[VoiceGuide] Selected Voice:", targetVoice ? targetVoice.name : "Default");
+    // Debug logging
+    console.log("---- Voice Guide Debug ----");
+    console.log(`Browser: ${navigator.userAgent}`);
+    console.log(`Voices found: ${voices.length}`);
+    console.log(`Utterance Lang: ${utterance.lang}`);
+    console.log(`Selected Voice: ${targetVoice ? targetVoice.name : "None"}`);
+    console.log("---------------------------");
 
     utterance.onstart = () => {
       setIsPlaying(true);
@@ -162,6 +181,7 @@ export function VoiceGuide() {
       console.error("Speech synthesis error", e);
       setIsPlaying(false);
       setIsPaused(false);
+      toast.error("Voice playback failed on this device.");
     };
 
     utteranceRef.current = utterance;
@@ -193,10 +213,16 @@ export function VoiceGuide() {
     }
   };
 
-  // Ensure getVoices is triggered on load (Chrome quirk)
+  // Ensure getVoices is triggered on load and handle async loading (Chrome quirk)
   useEffect(() => {
     if (typeof window !== "undefined" && window.speechSynthesis) {
       window.speechSynthesis.getVoices();
+      
+      if (window.speechSynthesis.onvoiceschanged !== undefined) {
+        window.speechSynthesis.onvoiceschanged = () => {
+          window.speechSynthesis.getVoices();
+        };
+      }
     }
   }, []);
 
